@@ -6,13 +6,14 @@ import AdsenseAd from "@/components/AdsenseAd";
 import {
   getPostBySlug,
   getPostNavigation,
-  posts,
+  getAllPosts,
   getRelatedPosts,
 } from "@/lib/data";
 
 export const revalidate = 60;
 
 export function generateStaticParams() {
+  const posts = getAllPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));

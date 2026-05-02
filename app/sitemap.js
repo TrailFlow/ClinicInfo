@@ -1,4 +1,4 @@
-import { posts, getAuthors } from "@/lib/data";
+import { getAllPosts, getAuthors } from "@/lib/data";
 
 export default async function sitemap() {
   const baseUrl = "https://clinicinfo.trailflow.in";
@@ -20,6 +20,7 @@ export default async function sitemap() {
   }));
 
   // Blog Posts
+  const posts = getAllPosts();
   const postEntries = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.isoDate),

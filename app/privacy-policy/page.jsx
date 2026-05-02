@@ -109,15 +109,14 @@ export default function PrivacyPolicy() {
             </p>
             <p>
               <strong>Advertising cookies (Google AdSense):</strong> We use
-              Google AdSense to show ads. Google and its partners may use cookies
-              (or similar identifiers) to serve and measure ads, limit the
-              frequency of ads, and personalize ads based on your interests.
+              Google AdSense to show ads. Google and its partners may use
+              cookies (or similar identifiers) to serve and measure ads, limit
+              the frequency of ads, and personalize ads based on your interests.
               Depending on your location, you may see consent controls.
             </p>
             <p>
-              You can usually control cookies through your browser settings.
-              You may also manage ad personalization through Google’s ad
-              settings.
+              You can usually control cookies through your browser settings. You
+              may also manage ad personalization through Google’s ad settings.
             </p>
           </section>
 
@@ -128,9 +127,9 @@ export default function PrivacyPolicy() {
             <p>
               Some ads on ClinicInfo are provided by third parties (such as
               Google). Those providers may collect information directly from
-              your browser or device and may set or recognize cookies.
-              We do not control the technologies used by these third parties,
-              and their data practices are governed by their own policies.
+              your browser or device and may set or recognize cookies. We do not
+              control the technologies used by these third parties, and their
+              data practices are governed by their own policies.
             </p>
             <p>
               Our articles may include links to external websites for further

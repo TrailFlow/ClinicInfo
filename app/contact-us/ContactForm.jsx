@@ -28,7 +28,8 @@ export default function ContactForm() {
     const message = values.message.trim();
     if (!message) next.message = "Please write a short message.";
     else if (message.length < 20)
-      next.message = "Please add a little more detail (at least 20 characters).";
+      next.message =
+        "Please add a little more detail (at least 20 characters).";
 
     return next;
   }, [values]);
@@ -66,10 +67,12 @@ export default function ContactForm() {
         </p>
         <div className="mt-4 rounded-xl bg-white p-4 text-[14px]">
           <p>
-            <span className="font-semibold">To:</span> support@clinicinfo.trailflow.in
+            <span className="font-semibold">To:</span>{" "}
+            support@clinicinfo.trailflow.in
           </p>
           <p>
-            <span className="font-semibold">Subject:</span> ClinicInfo website inquiry
+            <span className="font-semibold">Subject:</span> ClinicInfo website
+            inquiry
           </p>
         </div>
         <button
@@ -129,7 +132,10 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="text-sm font-semibold text-slate-700" htmlFor="message">
+        <label
+          className="text-sm font-semibold text-slate-700"
+          htmlFor="message"
+        >
           Message
         </label>
         <textarea
@@ -149,7 +155,9 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        disabled={hasErrors && (touched.name || touched.email || touched.message)}
+        disabled={
+          hasErrors && (touched.name || touched.email || touched.message)
+        }
         className="w-full rounded-2xl bg-[#001f42] px-6 py-4 text-sm font-bold text-white transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
       >
         Prepare message

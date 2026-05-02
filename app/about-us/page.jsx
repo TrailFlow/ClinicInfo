@@ -34,7 +34,9 @@ export default function AboutUsPage() {
             into clear next steps.
           </p>
 
-          <h2 className="text-xl font-semibold text-[#001f42]">What we publish</h2>
+          <h2 className="text-xl font-semibold text-[#001f42]">
+            What we publish
+          </h2>
           <p>
             We publish practical guides that explain: what a clinic typically
             does, who should consider visiting, what to expect during a visit,
@@ -45,7 +47,9 @@ export default function AboutUsPage() {
             a single hospital or a specific doctor.
           </p>
 
-          <h2 className="text-xl font-semibold text-[#001f42]">Who it is for</h2>
+          <h2 className="text-xl font-semibold text-[#001f42]">
+            Who it is for
+          </h2>
           <p>
             ClinicInfo is written for patients, caregivers, and anyone trying to
             make sense of healthcare options. Some readers are booking an
@@ -55,12 +59,14 @@ export default function AboutUsPage() {
             personal health decisions can be.
           </p>
 
-          <h2 className="text-xl font-semibold text-[#001f42]">How we approach accuracy</h2>
+          <h2 className="text-xl font-semibold text-[#001f42]">
+            How we approach accuracy
+          </h2>
           <p>
             Healthcare information changes over time and can vary by country,
             clinic, and patient situation. Our articles are designed to be a
-            starting point, not a replacement for professional advice.
-            Whenever you are unsure, the safest step is to speak with a licensed
+            starting point, not a replacement for professional advice. Whenever
+            you are unsure, the safest step is to speak with a licensed
             clinician who understands your medical history. If you notice
             something that looks outdated or unclear, we welcome feedback so we
             can improve it.
@@ -76,7 +82,9 @@ export default function AboutUsPage() {
             more informed, we’ve done our job.
           </p>
 
-          <h2 className="text-xl font-semibold text-[#001f42]">A quick note on medical advice</h2>
+          <h2 className="text-xl font-semibold text-[#001f42]">
+            A quick note on medical advice
+          </h2>
           <p>
             ClinicInfo does not provide diagnosis or treatment. Content on this
             site is for general educational purposes only. For medical concerns

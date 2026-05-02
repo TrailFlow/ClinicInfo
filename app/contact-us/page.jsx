@@ -28,8 +28,8 @@ export default function ContactUsPage() {
         <div className="prose prose-slate max-w-none text-[16px] leading-relaxed text-slate-600">
           <p>
             We welcome feedback about our articles and pages. If you noticed a
-            broken link, a typo, an outdated detail, or you have a suggestion for
-            a clinic topic you’d like us to cover, send us a message below.
+            broken link, a typo, an outdated detail, or you have a suggestion
+            for a clinic topic you’d like us to cover, send us a message below.
           </p>
           <p>
             If you are contacting us about a specific article, please include
