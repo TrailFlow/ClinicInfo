@@ -1,0 +1,21 @@
+{
+  "name": "ClinicInfo",
+  "short_name": "ClinicBlog",
+  "description": "Top multispecialty hospital articles and clinic guides.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#edf4fb",
+  "theme_color": "#001f42",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "ClinicInfo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "latest",
+    "@tailwindcss/typography": "^0.5.19",
+    "autoprefixer": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "postcss": "latest",
+    "tailwindcss": "latest"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}
