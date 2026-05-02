@@ -37,7 +37,7 @@ export default function BlogArchive({
               {/* Insert Ad after every 3rd post */}
               {(index + 1) % 3 === 0 && index !== posts.length - 1 && (
                 <div className="md:col-span-2 lg:col-span-3">
-                  <TopAdUnit pId="9153739171043032" slotId="7601032301" />
+                  <TopAdUnit pId="8620071569452620" slotId="7601032301" />
                 </div>
               )}
             </div>

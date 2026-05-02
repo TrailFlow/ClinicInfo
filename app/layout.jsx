@@ -39,21 +39,25 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta
+          name="google-adsense-account"
+          content="ca-pub-8620071569452620"
+        />
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9153739171043032"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8620071569452620"
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
       </head>
       <body className="min-h-screen bg-[#edf4fb] text-[#001f42] antialiased">
         <Header />
-        <AdsenseAd pId="9153739171043032" slotId="7601032301" />
+        <AdsenseAd pId="8620071569452620" slotId="7601032301" />
         {children}
         <Footer />
         <ScrollReset />
         <ScrollToTop />
-        {/* <FixedAdUnit pId="9153739171043032" slotId="7601032301" /> */}
+        {/* <FixedAdUnit pId="8620071569452620" slotId="7601032301" /> */}
       </body>
     </html>
   );

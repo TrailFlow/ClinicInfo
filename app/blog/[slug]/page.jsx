@@ -91,7 +91,7 @@ export default async function BlogDetailPage({ params }) {
           />
         </div>
         
-        <AdsenseAd pId="9153739171043032" slotId="7601032301" />
+        <AdsenseAd pId="8620071569452620" slotId="7601032301" />
 
         {/* Content with In-Article Ad */}
         <div className="mt-12 max-w-none text-lg leading-[1.8] text-slate-700 [&_h2]:mt-14 [&_h2]:mb-6 [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:text-[#001f42] [&_h3]:mt-10 [&_h3]:mb-4 [&_h3]:text-2xl [&_h3]:font-bold [&_h3]:text-[#001f42] [&_p]:mb-6 [&_a]:font-medium [&_a]:text-[#005bb7] hover:[&_a]:text-[#001f42] [&_a]:underline [&_ul]:mb-6 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:mb-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-2 [&_hr]:my-10 [&_hr]:border-slate-200 [&_strong]:font-semibold [&_strong]:text-slate-900">
@@ -105,7 +105,7 @@ export default async function BlogDetailPage({ params }) {
                 <>
                   <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
                   <div className="my-8">
-                    <AdsenseAd pId="9153739171043032" slotId="7601032301" />
+                    <AdsenseAd pId="8620071569452620" slotId="7601032301" />
                   </div>
                   <div dangerouslySetInnerHTML={{ __html: secondHalf }} />
                 </>
@@ -115,7 +115,7 @@ export default async function BlogDetailPage({ params }) {
           })()}
         </div>
 
-        <AdsenseAd pId="9153739171043032" slotId="7601032301" />
+        <AdsenseAd pId="8620071569452620" slotId="7601032301" />
 
         <nav
           className="mt-12 grid gap-3 border-t border-slate-100 pt-8 sm:grid-cols-2 sm:gap-4"
@@ -158,7 +158,7 @@ export default async function BlogDetailPage({ params }) {
           </section>
         )}
 
-        <AdsenseAd pId="9153739171043032" slotId="7601032301" />
+        <AdsenseAd pId="8620071569452620" slotId="7601032301" />
 
         {/* <div className="mt-8 border-t border-slate-100 pt-12">
           <CommentsForm postSlug={post.slug} postTitle={post.title} />
