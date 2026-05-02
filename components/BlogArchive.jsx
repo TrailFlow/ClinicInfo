@@ -7,9 +7,10 @@ export default function BlogArchive({
   currentPage,
   totalPages,
   label,
+  intro,
   firstPagePath = "/",
   pagedPathPrefix = "/page",
-  showAvatar = false
+  showAvatar = false,
 }) {
   return (
     <main className="bg-[#edf4fb]">
@@ -29,6 +30,8 @@ export default function BlogArchive({
         ) : (
           <h1 className="sr-only">Latest Health & Clinic Articles</h1>
         )}
+
+        {intro ? <div className="mb-9">{intro}</div> : null}
 
         <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post, index) => (

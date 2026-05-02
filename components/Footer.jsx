@@ -12,6 +12,18 @@ export default function Footer() {
 
           <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[14px] font-medium text-[#001f42]/80">
             <Link
+              href="/about-us"
+              className="transition-colors hover:text-[#001f42]"
+            >
+              About Us
+            </Link>
+            <Link
+              href="/contact-us"
+              className="transition-colors hover:text-[#001f42]"
+            >
+              Contact Us
+            </Link>
+            <Link
               href="/privacy-policy"
               className="transition-colors hover:text-[#001f42]"
             >

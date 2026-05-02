@@ -6,6 +6,8 @@ export default async function sitemap() {
   // Core Pages
   const staticPages = [
     "",
+    "/about-us",
+    "/contact-us",
     "/privacy-policy",
     "/disclaimer",
     "/terms-and-conditions",

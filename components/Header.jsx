@@ -29,6 +29,30 @@ export default function Header() {
                 Clinic
               </Link>
             </li>
+            <li>
+              <Link
+                href="/about-us"
+                className="rounded-xl px-5 py-2.5 transition hover:bg-clinic-50 hover:text-clinic-600"
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact-us"
+                className="rounded-xl px-5 py-2.5 transition hover:bg-clinic-50 hover:text-clinic-600"
+              >
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/privacy-policy"
+                className="rounded-xl px-5 py-2.5 transition hover:bg-clinic-50 hover:text-clinic-600"
+              >
+                Privacy
+              </Link>
+            </li>
           </ul>
         </nav>
 
@@ -86,6 +110,72 @@ export default function Header() {
                 onClick={() => setIsOpen(false)}
               >
                 <span>Clinic</span>
+                <svg
+                  className="h-5 w-5 opacity-30"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={3}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/about-us"
+                className="flex items-center justify-between rounded-2xl bg-slate-50 px-6 py-5 text-lg font-bold text-slate-700 transition active:scale-[0.98] active:bg-clinic-50 active:text-clinic-600"
+                onClick={() => setIsOpen(false)}
+              >
+                <span>About Us</span>
+                <svg
+                  className="h-5 w-5 opacity-30"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={3}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact-us"
+                className="flex items-center justify-between rounded-2xl bg-slate-50 px-6 py-5 text-lg font-bold text-slate-700 transition active:scale-[0.98] active:bg-clinic-50 active:text-clinic-600"
+                onClick={() => setIsOpen(false)}
+              >
+                <span>Contact Us</span>
+                <svg
+                  className="h-5 w-5 opacity-30"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={3}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/privacy-policy"
+                className="flex items-center justify-between rounded-2xl bg-slate-50 px-6 py-5 text-lg font-bold text-slate-700 transition active:scale-[0.98] active:bg-clinic-50 active:text-clinic-600"
+                onClick={() => setIsOpen(false)}
+              >
+                <span>Privacy Policy</span>
                 <svg
                   className="h-5 w-5 opacity-30"
                   fill="none"

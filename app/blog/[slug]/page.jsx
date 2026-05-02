@@ -3,13 +3,18 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import CommentsForm from "@/components/CommentsForm";
 import AdsenseAd from "@/components/AdsenseAd";
-import { getPostBySlug, getPostNavigation, posts, getRelatedPosts } from "@/lib/data";
+import {
+  getPostBySlug,
+  getPostNavigation,
+  posts,
+  getRelatedPosts,
+} from "@/lib/data";
 
 export const revalidate = 60;
 
 export function generateStaticParams() {
   return posts.map((post) => ({
-    slug: post.slug
+    slug: post.slug,
   }));
 }
 
@@ -19,7 +24,7 @@ export async function generateMetadata({ params }) {
 
   if (!post) {
     return {
-      title: "Article Not Found"
+      title: "Article Not Found",
     };
   }
 
@@ -27,7 +32,7 @@ export async function generateMetadata({ params }) {
     title: post.title,
     description: post.excerpt,
     alternates: {
-      canonical: `/blog/${post.slug}`
+      canonical: `/blog/${post.slug}`,
     },
     openGraph: {
       title: post.title,
@@ -40,10 +45,10 @@ export async function generateMetadata({ params }) {
           url: post.image,
           width: 1200,
           height: 720,
-          alt: post.title
-        }
-      ]
-    }
+          alt: post.title,
+        },
+      ],
+    },
   };
 }
 
@@ -90,17 +95,17 @@ export default async function BlogDetailPage({ params }) {
             className="object-cover"
           />
         </div>
-        
+
         <AdsenseAd pId="8620071569452620" slotId="7601032301" />
 
         {/* Content with In-Article Ad */}
         <div className="mt-12 max-w-none text-lg leading-[1.8] text-slate-700 [&_h2]:mt-14 [&_h2]:mb-6 [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:text-[#001f42] [&_h3]:mt-10 [&_h3]:mb-4 [&_h3]:text-2xl [&_h3]:font-bold [&_h3]:text-[#001f42] [&_p]:mb-6 [&_a]:font-medium [&_a]:text-[#005bb7] hover:[&_a]:text-[#001f42] [&_a]:underline [&_ul]:mb-6 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:mb-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-2 [&_hr]:my-10 [&_hr]:border-slate-200 [&_strong]:font-semibold [&_strong]:text-slate-900">
           {(() => {
-            const paragraphs = post.content.split('</p>');
+            const paragraphs = post.content.split("</p>");
             if (paragraphs.length > 4) {
               const mid = Math.floor(paragraphs.length / 2);
-              const firstHalf = paragraphs.slice(0, mid).join('</p>') + '</p>';
-              const secondHalf = paragraphs.slice(mid).join('</p>');
+              const firstHalf = paragraphs.slice(0, mid).join("</p>") + "</p>";
+              const secondHalf = paragraphs.slice(mid).join("</p>");
               return (
                 <>
                   <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
@@ -127,7 +132,9 @@ export default async function BlogDetailPage({ params }) {
 
         {relatedPosts.length > 0 && (
           <section className="mt-16 border-t border-slate-100 pt-12 pb-12">
-            <h2 className="text-2xl font-bold text-ink mb-8">More Articles You Might Like</h2>
+            <h2 className="text-2xl font-bold text-ink mb-8">
+              More Articles You Might Like
+            </h2>
             <div className="grid gap-6 sm:grid-cols-3">
               {relatedPosts.map((relatedPost) => (
                 <Link
@@ -184,12 +191,32 @@ function NavigationLink({ label, post, align }) {
     >
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-slate-200 transition-all duration-300 group-hover:bg-clinic-500 group-hover:text-white group-hover:ring-clinic-500">
         {isNext ? (
-          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+          <svg
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2.5}
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         ) : (
-          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+          <svg
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2.5}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         )}
       </div>
