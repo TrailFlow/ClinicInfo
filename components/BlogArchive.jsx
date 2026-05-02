@@ -14,7 +14,10 @@ export default function BlogArchive({
 }) {
   return (
     <main className="bg-[#edf4fb]">
-      <section id="blog" className="mx-auto max-w-[1300px] px-5 pb-14 pt-12">
+      <section
+        id="blog"
+        className="mx-auto max-w-[1300px] px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-12 lg:px-8"
+      >
         {label || showAvatar ? (
           <div className="mb-9 flex items-center justify-between gap-6 bg-white px-8 py-7 sm:px-10">
             <h1 className="text-3xl font-semibold leading-tight text-[#001f42] sm:text-4xl">
@@ -33,13 +36,13 @@ export default function BlogArchive({
 
         {intro ? <div className="mb-9">{intro}</div> : null}
 
-        <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7">
           {posts.map((post, index) => (
             <div key={post.id} className="contents">
               <BlogCard post={post} priority={index < 2} />
               {/* Insert Ad after every 3rd post */}
               {(index + 1) % 3 === 0 && index !== posts.length - 1 && (
-                <div className="md:col-span-2 lg:col-span-3">
+                <div className="sm:col-span-2 lg:col-span-3">
                   <TopAdUnit pId="8620071569452620" slotId="7601032301" />
                 </div>
               )}
