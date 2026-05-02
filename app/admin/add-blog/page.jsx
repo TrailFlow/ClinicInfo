@@ -378,7 +378,9 @@ export default function AddBlogAdminPage() {
                   <h2 className="text-base font-semibold text-[#001f42]">
                     Remove Blog
                   </h2>
-                  <p className="text-sm text-slate-600">Select a post to delete.</p>
+                  <p className="text-sm text-slate-600">
+                    Select a post to delete.
+                  </p>
                 </div>
                 <button
                   type="button"
@@ -396,7 +398,10 @@ export default function AddBlogAdminPage() {
                   onChange={(e) => setSelectedSlug(e.target.value)}
                   onFocus={() => {
                     if (!password.trim()) {
-                      setStatus({ type: "error", message: "Password is required." });
+                      setStatus({
+                        type: "error",
+                        message: "Password is required.",
+                      });
                       return;
                     }
                     if (posts.length === 0 && !isLoadingList) {
@@ -406,7 +411,10 @@ export default function AddBlogAdminPage() {
                   onMouseDown={(e) => {
                     if (!password.trim()) {
                       e.preventDefault();
-                      setStatus({ type: "error", message: "Password is required." });
+                      setStatus({
+                        type: "error",
+                        message: "Password is required.",
+                      });
                     }
                   }}
                   className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-700 outline-none transition focus:border-clinic-300"
