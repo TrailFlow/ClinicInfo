@@ -162,8 +162,8 @@ export default function PrivacyPolicy() {
             </h2>
             <p>
               If you have questions or comments about this notice, you may
-              contact us at <strong>support@clinicinfo.trailflow.in</strong> or
-              through our contact form.
+              contact us at <strong>trailflow.in@gmail.com</strong> or through
+              our contact form.
             </p>
           </section>
         </div>

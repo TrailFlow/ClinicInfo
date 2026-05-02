@@ -38,10 +38,7 @@ export default function ContactUsPage() {
           </p>
           <p>
             You can also email us directly at{" "}
-            <a href="mailto:support@clinicinfo.trailflow.in">
-              support@clinicinfo.trailflow.in
-            </a>
-            .
+            <a href="mailto:trailflow.in@gmail.com">trailflow.in@gmail.com</a>.
           </p>
         </div>
 

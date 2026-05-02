@@ -67,8 +67,7 @@ export default function ContactForm() {
         </p>
         <div className="mt-4 rounded-xl bg-white p-4 text-[14px]">
           <p>
-            <span className="font-semibold">To:</span>{" "}
-            support@clinicinfo.trailflow.in
+            <span className="font-semibold">To:</span> trailflow.in@gmail.com
           </p>
           <p>
             <span className="font-semibold">Subject:</span> ClinicInfo website
