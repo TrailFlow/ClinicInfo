@@ -1,10 +1,26 @@
 import "./globals.css";
 import Script from "next/script";
+import { Bricolage_Grotesque, Inter } from "next/font/google";
 import AdsenseAd from "@/components/AdsenseAd";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollReset from "@/components/ScrollReset";
+import PageTransition from "@/components/PageTransition";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import ThemeProvider from "@/components/ThemeProvider";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  display: "swap",
+});
 
 export const viewport = {
   themeColor: "#001f42",
@@ -15,8 +31,8 @@ export const viewport = {
 export const metadata = {
   metadataBase: new URL("https://clinicinfo.trailflow.in"),
   title: {
-    default: " ClinicInfo  - Top Multispecialty Hospitals",
-    template: "%s |  ClinicInfo  ",
+    default: "ClinicInfo - Top Multispecialty Hospitals",
+    template: "%s | ClinicInfo",
   },
   description:
     "Top multispecialty hospital articles, clinic guides, and patient health information.",
@@ -26,7 +42,7 @@ export const metadata = {
     apple: "/favicon.png",
   },
   openGraph: {
-    title: " ClinicInfo   - Top Multispecialty Hospitals",
+    title: "ClinicInfo - Top Multispecialty Hospitals",
     description:
       "Top multispecialty hospital articles, clinic guides, and patient health information.",
     url: "https://clinicinfo.trailflow.in",
@@ -46,15 +62,30 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-SHX1REHV63"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){window.dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SHX1REHV63', { send_page_view: false });`}
+        </Script>
       </head>
-      <body className="min-h-screen bg-[#edf4fb] text-[#001f42] antialiased">
-        <Header />
-        <AdsenseAd pId="8620071569452620" slotId="7601032301" />
-        {children}
-        <Footer />
-        <ScrollReset />
-        <ScrollToTop />
-        {/* <FixedAdUnit pId="8620071569452620" slotId="7601032301" /> */}
+      <body
+        className={`${inter.variable} ${bricolage.variable} min-h-screen antialiased`}
+      >
+        <ThemeProvider>
+          <GoogleAnalytics />
+          <Header />
+          <AdsenseAd pId="8620071569452620" slotId="7601032301" />
+          <PageTransition>{children}</PageTransition>
+          <Footer />
+          <ScrollReset />
+          <ScrollToTop />
+          {/* <FixedAdUnit pId="8620071569452620" slotId="7601032301" /> */}
+        </ThemeProvider>
       </body>
     </html>
   );

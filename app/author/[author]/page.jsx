@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
-import BlogArchive from "@/components/BlogArchive";
+import AuthorPageComponent from "@/components/AuthorPage";
 import {
   getAuthorBySlug,
   getAuthors,
   getPaginatedAuthorPosts,
+  getPostsByAuthor,
   POSTS_PER_PAGE,
 } from "@/lib/data";
 
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `Author name: ${author.name}`,
+    title: `${author.name} — ClinicInfo Author`,
     description: `Read ClinicInfo posts by ${author.name}.`,
   };
 }
@@ -40,21 +41,9 @@ export default async function AuthorPage({ params }) {
     notFound();
   }
 
-  const { posts, totalPages, currentPage } = getPaginatedAuthorPosts(
-    author.slug,
-    1,
-    POSTS_PER_PAGE,
-  );
-
+  const allPosts = getPostsByAuthor(author.slug);
+  const { posts } = getPaginatedAuthorPosts(author.slug, 1, POSTS_PER_PAGE);
   return (
-    <BlogArchive
-      posts={posts}
-      currentPage={currentPage}
-      totalPages={totalPages}
-      label={`Author name: ${author.name}`}
-      firstPagePath={`/author/${author.slug}`}
-      pagedPathPrefix={`/author/${author.slug}/page`}
-      showAvatar
-    />
+    <AuthorPageComponent author={author} posts={allPosts} pagePosts={posts} />
   );
 }

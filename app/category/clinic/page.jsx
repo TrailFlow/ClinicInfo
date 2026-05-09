@@ -1,5 +1,5 @@
-import BlogArchive from "@/components/BlogArchive";
-import { getPaginatedPosts, POSTS_PER_PAGE } from "@/lib/data";
+import CategoryPage from "@/components/CategoryPage";
+import { getAllPosts } from "@/lib/data";
 
 export const revalidate = 60;
 
@@ -9,19 +9,6 @@ export const metadata = {
 };
 
 export default function ClinicCategoryPage() {
-  const { posts, totalPages, currentPage } = getPaginatedPosts(
-    1,
-    POSTS_PER_PAGE
-  );
-
-  return (
-    <BlogArchive
-      posts={posts}
-      currentPage={currentPage}
-      totalPages={totalPages}
-      label="clinic"
-      firstPagePath="/category/clinic"
-      pagedPathPrefix="/category/clinic/page"
-    />
-  );
+  const posts = getAllPosts().filter((post) => post.category === "clinic");
+  return <CategoryPage slug="clinic" posts={posts} />;
 }

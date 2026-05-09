@@ -276,7 +276,7 @@ export default function AddBlogAdminPage() {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="mt-3 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-700 outline-none transition focus:border-clinic-300"
+                    className="mt-3 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-700 outline-none transition focus:border-[var(--accent)]"
                     placeholder="Enter admin password"
                     autoComplete="current-password"
                   />
@@ -294,7 +294,7 @@ export default function AddBlogAdminPage() {
                     type="file"
                     accept="application/json,.json"
                     onChange={(e) => setJsonFile(e.target.files?.[0] || null)}
-                    className="mt-3 w-full rounded-xl border border-dashed border-slate-200 bg-slate-50 px-4 py-3 text-[15px] text-slate-700 outline-none transition focus:border-clinic-300"
+                    className="mt-3 w-full rounded-xl border border-dashed border-slate-200 bg-slate-50 px-4 py-3 text-[15px] text-slate-700 outline-none transition focus:border-[var(--accent)]"
                   />
                   <p className="mt-2 text-xs text-slate-500">
                     Required per post: title, slug, content, image, date.
@@ -315,7 +315,7 @@ export default function AddBlogAdminPage() {
                   type="file"
                   accept=".zip,application/zip"
                   onChange={(e) => setZipFile(e.target.files?.[0] || null)}
-                  className="mt-3 w-full rounded-xl border border-dashed border-slate-200 bg-slate-50 px-4 py-3 text-[15px] text-slate-700 outline-none transition focus:border-clinic-300"
+                  className="mt-3 w-full rounded-xl border border-dashed border-slate-200 bg-slate-50 px-4 py-3 text-[15px] text-slate-700 outline-none transition focus:border-[var(--accent)]"
                 />
               </div>
 
@@ -417,7 +417,7 @@ export default function AddBlogAdminPage() {
                       });
                     }
                   }}
-                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-700 outline-none transition focus:border-clinic-300"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-700 outline-none transition focus:border-[var(--accent)]"
                 >
                   <option value="">Select a blog…</option>
                   {posts.map((post) => (
@@ -430,7 +430,7 @@ export default function AddBlogAdminPage() {
                   type="button"
                   onClick={deletePost}
                   disabled={isDeleting}
-                  className="w-full rounded-xl bg-rose-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-rose-700 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="w-full rounded-xl bg-[var(--accent)] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[var(--accent-hover)] disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {isDeleting ? "Removing…" : "Remove"}
                 </button>
