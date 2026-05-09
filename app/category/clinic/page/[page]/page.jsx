@@ -6,7 +6,8 @@ export const revalidate = 60;
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  const totalPages = getTotalPages(POSTS_PER_PAGE);
+  const clinicPosts = getAllPosts().filter((post) => post.category === "clinic");
+  const totalPages = Math.ceil(clinicPosts.length / POSTS_PER_PAGE);
 
   return Array.from({ length: totalPages - 1 }, (_, index) => ({
     page: String(index + 2)

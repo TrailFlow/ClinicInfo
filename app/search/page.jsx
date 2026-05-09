@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import PostCard from "@/components/PostCard";
-import { getPosts } from "@/lib/data";
+import { getAllPosts } from "@/lib/data";
 import { categories } from "@/lib/categories";
 
 export const metadata = {
@@ -28,7 +28,7 @@ export default function SearchPage({ searchParams }) {
     );
   }
 
-  const allPosts = getPosts();
+  const allPosts = getAllPosts();
   const filtered = allPosts.filter((post) => {
     const matchesQuery =
       query &&
