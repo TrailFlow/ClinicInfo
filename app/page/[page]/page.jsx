@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import BlogArchive from "@/components/BlogArchive";
-import { getPaginatedPosts, getTotalPages, POSTS_PER_PAGE } from "@/lib/data";
+import HomePage from "@/components/HomePage";
+import { getAllPosts, getTotalPages, POSTS_PER_PAGE } from "@/lib/data";
 
 export const revalidate = 60;
 export const dynamicParams = false;
@@ -35,13 +35,19 @@ export default async function BlogPage({ params }) {
     notFound();
   }
 
-  const { posts, currentPage } = getPaginatedPosts(pageNumber, POSTS_PER_PAGE);
+  const allPosts = getAllPosts().sort(
+    (a, b) => new Date(b.isoDate) - new Date(a.isoDate),
+  );
+  const start = (pageNumber - 1) * POSTS_PER_PAGE;
+  const pagePosts = allPosts.slice(start, start + POSTS_PER_PAGE);
 
   return (
-    <BlogArchive
-      posts={posts}
-      currentPage={currentPage}
+    <HomePage
+      posts={allPosts}
+      pagePosts={pagePosts}
       totalPages={totalPages}
+      currentPage={pageNumber}
+      totalCount={allPosts.length}
     />
   );
 }

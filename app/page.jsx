@@ -1,5 +1,5 @@
-import BlogArchive from "@/components/BlogArchive";
-import { getPaginatedPosts, POSTS_PER_PAGE } from "@/lib/data";
+import HomePage from "@/components/HomePage";
+import { getAllPosts, getTotalPages, POSTS_PER_PAGE } from "@/lib/data";
 
 export const revalidate = 60;
 
@@ -21,16 +21,19 @@ export const metadata = {
 };
 
 export default function Home() {
-  const { posts, totalPages, currentPage } = getPaginatedPosts(
-    1,
-    POSTS_PER_PAGE,
+  const allPosts = getAllPosts().sort(
+    (a, b) => new Date(b.isoDate) - new Date(a.isoDate),
   );
+  const totalPages = getTotalPages(POSTS_PER_PAGE);
+  const pagePosts = allPosts.slice(0, POSTS_PER_PAGE);
 
   return (
-    <BlogArchive
-      posts={posts}
-      currentPage={currentPage}
+    <HomePage
+      posts={allPosts}
+      pagePosts={pagePosts}
       totalPages={totalPages}
+      currentPage={1}
+      totalCount={allPosts.length}
     />
   );
 }

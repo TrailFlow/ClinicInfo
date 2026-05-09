@@ -1,10 +1,6 @@
 import { notFound } from "next/navigation";
-import BlogArchive from "@/components/BlogArchive";
-import {
-  getPaginatedPosts,
-  getTotalPages,
-  POSTS_PER_PAGE
-} from "@/lib/data";
+import CategoryPage from "@/components/CategoryPage";
+import { getAllPosts, POSTS_PER_PAGE } from "@/lib/data";
 
 export const revalidate = 60;
 export const dynamicParams = false;
@@ -29,7 +25,8 @@ export async function generateMetadata({ params }) {
 export default async function ClinicCategoryPagedPage({ params }) {
   const { page } = await params;
   const pageNumber = Number(page);
-  const totalPages = getTotalPages(POSTS_PER_PAGE);
+  const clinicPosts = getAllPosts().filter((post) => post.category === "clinic");
+  const totalPages = Math.ceil(clinicPosts.length / POSTS_PER_PAGE);
 
   if (
     !Number.isInteger(pageNumber) ||
@@ -39,16 +36,5 @@ export default async function ClinicCategoryPagedPage({ params }) {
     notFound();
   }
 
-  const { posts, currentPage } = getPaginatedPosts(pageNumber, POSTS_PER_PAGE);
-
-  return (
-    <BlogArchive
-      posts={posts}
-      currentPage={currentPage}
-      totalPages={totalPages}
-      label="clinic"
-      firstPagePath="/category/clinic"
-      pagedPathPrefix="/category/clinic/page"
-    />
-  );
+  return <CategoryPage slug="clinic" posts={clinicPosts} />;
 }

@@ -45,46 +45,36 @@ export default function Pagination({
   const pages = getPages();
 
   return (
-    <nav className="mt-16 mb-8 px-4" aria-label="Pagination">
-      <div className="mx-auto flex max-w-fit items-center justify-center gap-1.5 sm:gap-2">
-        {/* Previous Button */}
+    <nav className="mt-12 flex justify-center" aria-label="Pagination">
+      <div className="flex items-center gap-2">
         {currentPage > 1 ? (
           <Link
             href={getPath(currentPage - 1)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 transition-all duration-300 hover:border-clinic-500 hover:bg-clinic-50 hover:text-clinic-600 sm:w-auto sm:px-4 sm:gap-2"
-            title="Previous Page"
+            className="flex items-center gap-2 rounded-[var(--radius-button)] border border-[var(--border)] bg-[var(--bg-primary)] px-3 py-2 text-sm font-semibold text-[var(--text-secondary)]"
           >
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-            </svg>
-            <span className="hidden sm:inline text-sm font-bold">Previous</span>
+            Previous
           </Link>
         ) : (
-          <span className="flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-xl border border-slate-100 bg-slate-50 text-slate-300 sm:w-auto sm:px-4 sm:gap-2">
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-            </svg>
-            <span className="hidden sm:inline text-sm font-bold text-slate-300">Previous</span>
+          <span className="flex items-center gap-2 rounded-[var(--radius-button)] border border-[var(--border)] bg-[var(--bg-secondary)] px-3 py-2 text-sm font-semibold text-[var(--text-muted)]">
+            Previous
           </span>
         )}
 
-        {/* Page Numbers */}
-        <div className="flex items-center gap-1 sm:gap-1.5">
+        <div className="hidden items-center gap-2 sm:flex">
           {pages.map((page, index) => {
             if (page === "...") {
               return (
-                <span key={`dots-${index}`} className="w-6 text-center text-slate-400">
+                <span key={`dots-${index}`} className="px-2 text-[var(--text-muted)]">
                   ...
                 </span>
               );
             }
 
             const isActive = page === currentPage;
-
             return isActive ? (
               <span
                 key={page}
-                className="flex h-10 w-10 items-center justify-center rounded-xl bg-clinic-500 text-sm font-bold text-white shadow-sm shadow-clinic-100 ring-1 ring-clinic-500"
+                className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-button)] bg-[var(--accent)] text-sm font-semibold text-white"
               >
                 {page}
               </span>
@@ -92,7 +82,7 @@ export default function Pagination({
               <Link
                 key={page}
                 href={getPath(page)}
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-sm font-bold text-slate-600 transition-all duration-300 hover:border-clinic-300 hover:bg-clinic-50 hover:text-clinic-600"
+                className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-button)] border border-[var(--border)] bg-[var(--bg-primary)] text-sm font-semibold text-[var(--text-secondary)]"
               >
                 {page}
               </Link>
@@ -100,24 +90,22 @@ export default function Pagination({
           })}
         </div>
 
-        {/* Next Button */}
+        <div className="sm:hidden">
+          <span className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-button)] bg-[var(--accent)] text-sm font-semibold text-white">
+            {currentPage}
+          </span>
+        </div>
+
         {currentPage < totalPages ? (
           <Link
             href={getPath(currentPage + 1)}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 transition-all duration-300 hover:border-clinic-500 hover:bg-clinic-50 hover:text-clinic-600 sm:w-auto sm:px-4 sm:gap-2"
-            title="Next Page"
+            className="flex items-center gap-2 rounded-[var(--radius-button)] border border-[var(--border)] bg-[var(--bg-primary)] px-3 py-2 text-sm font-semibold text-[var(--text-secondary)]"
           >
-            <span className="hidden sm:inline text-sm font-bold">Next</span>
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-            </svg>
+            Next
           </Link>
         ) : (
-          <span className="flex h-10 w-10 cursor-not-allowed items-center justify-center rounded-xl border border-slate-100 bg-slate-50 text-slate-300 sm:w-auto sm:px-4 sm:gap-2">
-            <span className="hidden sm:inline text-sm font-bold text-slate-300">Next</span>
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-            </svg>
+          <span className="flex items-center gap-2 rounded-[var(--radius-button)] border border-[var(--border)] bg-[var(--bg-secondary)] px-3 py-2 text-sm font-semibold text-[var(--text-muted)]">
+            Next
           </span>
         )}
       </div>

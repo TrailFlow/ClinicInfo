@@ -1,6 +1,6 @@
 {
   "name": "ClinicInfo",
-  "short_name": "ClinicBlog",
+  "short_name": "ClinicInfo",
   "description": "Top multispecialty hospital articles and clinic guides.",
   "start_url": "/",
   "display": "standalone",

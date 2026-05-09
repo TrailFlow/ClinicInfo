@@ -16,6 +16,8 @@ export default function ContactForm() {
     message: false,
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState("");
 
   const errors = useMemo(() => {
     const next = {};
@@ -46,40 +48,48 @@ export default function ContactForm() {
     setTouched((prev) => ({ ...prev, [name]: true }));
   }
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
     setTouched({ name: true, email: true, message: true });
+    setServerError("");
 
     if (Object.keys(errors).length > 0) return;
 
-    // No backend per requirement: show a confirmation state only.
-    setSubmitted(true);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/send-mail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      const body = await res.json();
+      if (!res.ok) throw new Error(body?.error || "Failed to send");
+
+      setSubmitted(true);
+      setValues({ name: "", email: "", message: "" });
+      setTouched({ name: false, email: false, message: false });
+    } catch (err) {
+      console.error(err);
+      setServerError(err.message || "Failed to send message");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
     return (
       <div className="rounded-2xl border border-slate-100 bg-slate-50 p-6 text-slate-700">
-        <h2 className="text-lg font-bold text-[#001f42]">Message prepared</h2>
+        <h2 className="text-lg font-bold text-[#001f42]">Message sent</h2>
         <p className="mt-2 text-[15px] leading-relaxed">
-          Thanks — your message is ready to be sent. Since this site doesn’t
-          store form submissions yet, please email us directly and copy/paste
-          your message.
+          Thanks — your message was sent. We will reply to you at the email
+          address you provided.
         </p>
-        <div className="mt-4 rounded-xl bg-white p-4 text-[14px]">
-          <p>
-            <span className="font-semibold">To:</span> trailflow.in@gmail.com
-          </p>
-          <p>
-            <span className="font-semibold">Subject:</span> ClinicInfo website
-            inquiry
-          </p>
-        </div>
         <button
           type="button"
           onClick={() => {
             setSubmitted(false);
-            setValues({ name: "", email: "", message: "" });
-            setTouched({ name: false, email: false, message: false });
+            setServerError("");
           }}
           className="mt-5 rounded-xl bg-white px-5 py-3 text-sm font-bold text-slate-700 ring-1 ring-slate-200 transition hover:bg-slate-50"
         >
@@ -101,7 +111,7 @@ export default function ContactForm() {
           value={values.name}
           onChange={onChange}
           onBlur={onBlur}
-          className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-700 outline-none ring-0 transition focus:border-clinic-300"
+          className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-700 outline-none ring-0 transition focus:border-[var(--accent)]"
           placeholder="Your name"
           autoComplete="name"
         />
@@ -120,7 +130,7 @@ export default function ContactForm() {
           value={values.email}
           onChange={onChange}
           onBlur={onBlur}
-          className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-700 outline-none ring-0 transition focus:border-clinic-300"
+          className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-700 outline-none ring-0 transition focus:border-[var(--accent)]"
           placeholder="you@example.com"
           autoComplete="email"
           inputMode="email"
@@ -144,7 +154,7 @@ export default function ContactForm() {
           onChange={onChange}
           onBlur={onBlur}
           rows={6}
-          className="mt-2 w-full resize-y rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-700 outline-none ring-0 transition focus:border-clinic-300"
+          className="mt-2 w-full resize-y rounded-xl border border-slate-200 bg-white px-4 py-3 text-[15px] text-slate-700 outline-none ring-0 transition focus:border-[var(--accent)]"
           placeholder="Tell us what you were trying to do, and what didn’t work…"
         />
         {touched.message && errors.message ? (
@@ -155,12 +165,17 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={
-          hasErrors && (touched.name || touched.email || touched.message)
+          loading ||
+          (hasErrors && (touched.name || touched.email || touched.message))
         }
         className="w-full rounded-2xl bg-[#001f42] px-6 py-4 text-sm font-bold text-white transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
       >
-        Prepare message
+        {loading ? "Sending..." : "Send message"}
       </button>
+
+      {serverError ? (
+        <p className="mt-2 text-sm text-rose-600">{serverError}</p>
+      ) : null}
 
       <p className="text-xs text-slate-500">
         This form does not store submissions yet. For urgent medical concerns,
